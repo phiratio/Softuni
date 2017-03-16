@@ -36,18 +36,19 @@ function solve(arr) {
     let x = Number(arr[0]);
 
     function isPrime(Number) {
-            let uberX = Math.ceil(x);
-            let m = Math.sqrt(uberX).toFixed(0);
-            for (let i = 2; i <= m; i++) {
+        let m = Math.sqrt(x).toFixed(0);
+        var answer = "Prime";
+        for (let i = 2; i <= m; i++) {
                 if (x % i === 0) {
-                    console.log("Not prime");
+                    answer = "Not prime";
+                    console.log(answer);
                     break;
                 }
-                console.log("Prime");
-            }
+            console.log(answer);
+        }
     }
 
-    x <= 2 ? console.log("Not prime") : isPrime(x) ;
+    x <= 2 ? console.log("Not prime") : isPrime(x);
 
 };
 ////////////////////////////////////////////////////////
