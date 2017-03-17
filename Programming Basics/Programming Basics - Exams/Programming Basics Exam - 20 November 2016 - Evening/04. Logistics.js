@@ -1,5 +1,5 @@
 /**
- * Created by Void-S on 15-Mar-17.
+ * Created by Void-S on 17-Mar-17.
  */
 function solve(arr) {
     let utilities = (function () {
@@ -32,31 +32,29 @@ function solve(arr) {
         return helperApi;
     })();
     let workingArr = utilities.makeAllArrayElementsNumbers(arr);
-    let rowLength = ( workingArr[0] * 4 )+ 1;
-    let rowNumbers = ( workingArr[0] * 2 ) + 5;
-    let part1 =  Array( ( (rowLength - 3) / 2 ) + 1 ).join(".");
-    let peak =
-            part1 + "/|\\" + part1 + "\n" +
-            part1 + "\\|/" + part1 + "\n" +
-            part1 + "***" + part1 + "\n";
-    let body = "";
-    for(let i = 1; i <= ( arr[0] * 2 ) - 1; i++){
-        body += `${Array( (rowLength -5) / 2 + 2 - i).join(".")}*${Array(i + 1).join("-")}*${Array(i + 1).join("-")}*${Array( (rowLength -5) / 2 + 2 - i).join(".")}` + "\n";
-    }
-    let starDotPattern = "";
-    for (let i = 1; i <= rowLength; i++){
-        if(i % 2 != 0){
-            starDotPattern += "*"
-        } else {
-            starDotPattern += "."
+    let slicedTons = workingArr.slice(1);
+    let totalTons = slicedTons.reduce( (acc, val) => {
+        return acc + val;
+    });
+    let tonsBus = 0;
+    let tonsTruck = 0;
+    let tonsTrain = 0;
+    slicedTons.forEach( el => {
+        if(el <= 3){
+            tonsBus += el;
+        }else if(el > 3 && el <= 11){
+            tonsTruck += el;
+        }else{
+            tonsTrain += el;
         }
-    }
+    });
 
-    let bottom =
-        Array(rowLength + 1).join("*") + "\n" +
-            starDotPattern + "\n" +
-        Array(rowLength + 1).join("*");
-    console.log(peak + body + bottom);
+    let MediumTonPrice = ( tonsBus * 200 + tonsTruck * 175 + tonsTrain * 120 ) / totalTons;
+    let busPer = tonsBus / totalTons * 100;
+    let truckPer = tonsTruck / totalTons * 100;
+    let trainPer = tonsTrain / totalTons * 100;
+    console.log(`${MediumTonPrice.toFixed(2)}
+${busPer.toFixed(2)}%
+${truckPer.toFixed(2)}%
+${trainPer.toFixed(2)}%`)
 };
-
-
