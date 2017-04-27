@@ -25,7 +25,7 @@ function solve(arr) {
                 if (num === 0) {
                     return 1;
                 } else {
-                    return num * rFact(num - 1);
+                    return num * utilities.factoriel(num - 1);
                 }
             }
         };
@@ -39,4 +39,4 @@ function solve(arr) {
     workingArr[0] > (totalHours) ?
         console.log(`Not enough time!${outcome} hours needed.`):
         console.log(`Yes!${outcome} hours left.`);
-};
+}

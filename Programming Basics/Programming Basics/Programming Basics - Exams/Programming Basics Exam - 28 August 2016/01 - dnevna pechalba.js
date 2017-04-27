@@ -25,7 +25,7 @@ function solve(arr) {
                 if (num === 0) {
                     return 1;
                 } else {
-                    return num * rFact(num - 1);
+                    return num * utilities.factoriel(num - 1);
                 }
             }
         };
@@ -36,4 +36,4 @@ function solve(arr) {
     let yearIncome = monthlySalary * 14.5;
     let incomeWithoutTax = yearIncome * 0.75;
     console.log(`${(incomeWithoutTax / 365 * workingArr[2]).toFixed(2)}`);
-};
+}
